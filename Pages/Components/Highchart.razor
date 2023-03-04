@@ -1,0 +1,51 @@
+﻿@implements IDisposable
+
+<DatePicker DateChanged="DateChange"/>
+<br />
+<div id="basicLine"></div>
+<br />
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Value #1</th>
+            <th>Value #2</th>
+            <th>Value #3</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var data in TableData)
+        {
+            <tr>
+                <td>@data.DateTime</td>
+                @foreach (var value in data.Values)
+                {
+                    if (value.Value1.ExceedsThreshold is true)
+                    {
+                        <td class="text-danger">@value.Value1.Number</td>
+                    }
+                    else
+                    {
+                        <td class="text-black">@value.Value1.Number</td>
+                    }
+                    if (value.Value2.ExceedsThreshold is true)
+                    {
+                        <td class="text-danger">@value.Value2.Number</td>
+                    }
+                    else
+                    {
+                        <td class="text-black">@value.Value2.Number</td>
+                    }
+                    if (value.Value3.ExceedsThreshold is true)
+                    {
+                        <td class="text-danger">@value.Value3.Number</td>
+                    }
+                    else
+                    {
+                        <td class="text-black">@value.Value3.Number</td>
+                    }
+                }
+            </tr>
+        }
+    </tbody>
+</table>
